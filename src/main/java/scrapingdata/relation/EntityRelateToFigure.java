@@ -45,10 +45,25 @@ public class EntityRelateToFigure {
         reader.close();
 
         return relicList;
+    } public List<Event> loadDataJsonEvent() throws IOException {
+        Gson gson = new Gson();
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Event.json"));
+        List<Event> eventList =  Arrays.asList(gson.fromJson(reader, Event[].class));
+        reader.close();
+
+        return eventList;
+    }
+    public List<KingWiki> loadDataJsonKing() throws IOException {
+        Gson gson = new Gson();
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/King_Wiki.json"));
+        List<KingWiki> kingList =  Arrays.asList(gson.fromJson(reader, KingWiki[].class));
+        reader.close();
+        return kingList;
     }
 
 
-    public Map<BaseEntity, List<BaseEntity>> Relating(List<Character> figureList, List<Festival> festivalList, List<Dynasty> dynastyList, List<Relic> relicList ) {
+
+    public Map<BaseEntity, List<BaseEntity>> Relating(List<Character> figureList, List<Festival> festivalList, List<Dynasty> dynastyList, List<Relic> relicList, List<Event> eventList, List<KingWiki> kingWikiList ) {
         Map<BaseEntity, List<BaseEntity>> map = new HashMap<>();
         for (Character c : figureList) {
             if(c == null){
@@ -76,6 +91,25 @@ public class EntityRelateToFigure {
                         relatedEntity.add(r);
                     }
                 }
+                for(Event e : eventList){
+                    if(e.isRelated(cName)){
+                        relatedEntity.add(e);
+                    }
+                }
+                for(KingWiki k :kingWikiList){
+                    if(k.isRelated(cName)) {
+                        relatedEntity.add(k);
+                    }else if(k.getThanMau()!= null && k.getThanMau().equals(cName)){
+                        relatedEntity.add(k);
+                    } else if (k.getThanPhu() != null && k.getThanPhu().equals(cName)) {
+                        relatedEntity.add(k);
+                    }else if(k.getTienNhiem() != null && k.getTienNhiem().equals(cName)){
+                        relatedEntity.add(k);
+                    }else if(k.getKeNhiem() != null && k.getKeNhiem().equals(cName)){
+                        relatedEntity.add(k);
+                    }
+
+                }
             }
             map.put(c,relatedEntity);
         }
@@ -88,7 +122,9 @@ public class EntityRelateToFigure {
         List<Festival> festivalList = relate.loadDataJsonFestival();
         List<Dynasty> dynastyList = relate.loadDataDynasty();
         List<Relic> relicList = relate.loadDataJsonRelic();
-        Map<BaseEntity, List<BaseEntity>> maping = relate.Relating(figureList,festivalList,dynastyList,relicList);
+        List<Event> eventList = relate.loadDataJsonEvent();
+        List<KingWiki> kingWikiList = relate.loadDataJsonKing();
+        Map<BaseEntity, List<BaseEntity>> maping = relate.Relating(figureList,festivalList,dynastyList,relicList, eventList, kingWikiList );
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(maping);
         try (FileWriter writer = new FileWriter("src\\main\\java\\json\\Relating.json")) {

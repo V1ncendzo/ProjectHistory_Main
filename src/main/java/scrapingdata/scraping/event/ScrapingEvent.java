@@ -4,6 +4,7 @@ package scrapingdata.scraping.event;
 import scrapingdata.Base;
 
 import java.io.IOException;
+import java.util.List;
 
 public abstract class ScrapingEvent extends Base {
     public ScrapingEvent(String url) {
@@ -23,6 +24,7 @@ public abstract class ScrapingEvent extends Base {
 //        this.eventList = eventList;
 //    }
 
-    public abstract void getData() throws IOException;
+    public abstract void getAllEventLinks() throws IOException;
+    public abstract void getEventData(List<String> URLS) throws IOException;
 
 }
