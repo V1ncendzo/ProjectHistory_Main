@@ -22,6 +22,7 @@ public class Event extends BaseEntity {
         this.dynasty.setName(dynastyName);
     }
 
+
     public List<Event> loadDataJson() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Event_Wiki.json"));

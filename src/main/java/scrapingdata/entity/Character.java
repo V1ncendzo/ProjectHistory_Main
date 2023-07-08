@@ -65,7 +65,7 @@ public class Character extends BaseEntity {
                 +*/ "\n" + "Chi tiết: " + this.getDescription();
     }
 
-    @Override
+
     public List<Character> loadDataJson() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Figure.json"));

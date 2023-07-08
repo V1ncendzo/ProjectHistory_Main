@@ -44,7 +44,7 @@ public class Dynasty extends BaseEntity {
         return "Tên: " + this.getName() + "\n" + "Thời gian: " + this.getTime() + "\n" + "Tên nước: " + this.getKingdom() + "\n" + "Thủ đô: " + this.getCapital() + "\n" + "các đời vua: " + /*this.getKing().toString()*/
                  "\n" +  "Chi tiết: " + this.getDescription();
     }
-    @Override
+
     public List<Dynasty> loadDataJson() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasties_NKS.json"));

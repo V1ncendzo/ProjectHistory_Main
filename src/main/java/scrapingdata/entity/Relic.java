@@ -52,7 +52,7 @@ public class Relic extends BaseEntity{
     public String hienthi() {
         return "Tên: " + this.getName() + "\n" + "Tỉnh:" + this.getProvince() + "\n" + "Chứng nhận: " + this.getCertifacte() + "\n" + "Chi tiết: " + this.getDescription();
     }
-    @Override
+
     public List<Relic> loadDataJson() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Relic.json"));

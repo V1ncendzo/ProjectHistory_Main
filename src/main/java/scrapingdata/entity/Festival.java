@@ -48,7 +48,7 @@ public class Festival extends BaseEntity {
         return "Tên: " + this.getName() + "\n" + "Thời gian: " + this.getTime() + "\n" + "Địa điểm: " + this.getPlace() + "\n" + "Lần đầu tổ chức: " + this.getFirstTime() + "\n" + "Nhân vật: " + this.getCharacter()
                 + "\n" + "Chi Tiết: " + this.getDescription();
     }
-    @Override
+
     public List<Festival> loadDataJson() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Festival_Wiki.json"));
