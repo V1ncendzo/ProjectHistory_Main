@@ -2,6 +2,13 @@ package scrapingdata.entity;
 
 
 
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -57,4 +64,14 @@ public class Character extends BaseEntity {
         return "Tên: " + this.getName() + "\n" + "Năm sinh - năm mất: " + this.getTime() + "\n" + /*"Tên khác: " + this.getotherName() +*/ "\n" + /*"Quê quán: " + this.getPlace() +*/ "\n" + /*"Thời: " + /*this.getEra().toString()
                 +*/ "\n" + "Chi tiết: " + this.getDescription();
     }
+
+    @Override
+    public List<Character> loadDataJson() throws IOException {
+        Gson gson = new Gson();
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Figure.json"));
+        List<Character> dks = Arrays.asList(gson.fromJson(reader, Character[].class));
+        reader.close();
+        return dks;
+    }
+
 }

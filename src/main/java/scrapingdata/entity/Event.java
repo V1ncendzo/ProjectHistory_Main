@@ -24,7 +24,7 @@ public class Event extends BaseEntity {
 
     public List<Event> loadDataJson() throws IOException {
         Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/event.json"));
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Event_Wiki.json"));
         List<Event> dks = Arrays.asList(gson.fromJson(reader, Event[].class));
 
         return dks;
@@ -33,4 +33,5 @@ public class Event extends BaseEntity {
     public String hienthi() {
         return  "Tên: " + this.getName() + "\n" + "Thời gian: " + this.getTime() + "\n" + "Triều đại: " + this.dynasty.getName() + "\n" + "Chi tiết: " + this.getDescription();
     }
+
 }

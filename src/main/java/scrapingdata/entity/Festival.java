@@ -19,14 +19,6 @@ public class Festival extends BaseEntity {
     public Festival() {
 
     }
-    public List<Festival> loadDataJson() throws IOException {
-        Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Festival_Wiki.json"));
-        List<Festival> dks = Arrays.asList(gson.fromJson(reader, Festival[].class)); //dks is arraylist of festival
-        reader.close();
-
-        return dks;
-    }
 
     public String getPlace() {
         return place;
@@ -55,5 +47,14 @@ public class Festival extends BaseEntity {
     public String hienthi() {
         return "Tên: " + this.getName() + "\n" + "Thời gian: " + this.getTime() + "\n" + "Địa điểm: " + this.getPlace() + "\n" + "Lần đầu tổ chức: " + this.getFirstTime() + "\n" + "Nhân vật: " + this.getCharacter()
                 + "\n" + "Chi Tiết: " + this.getDescription();
+    }
+    @Override
+    public List<Festival> loadDataJson() throws IOException {
+        Gson gson = new Gson();
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Festival_Wiki.json"));
+        List<Festival> dks = Arrays.asList(gson.fromJson(reader, Festival[].class)); //dks is arraylist of festival
+        reader.close();
+
+        return dks;
     }
 }

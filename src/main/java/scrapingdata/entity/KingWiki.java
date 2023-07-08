@@ -1,5 +1,14 @@
 package scrapingdata.entity;
 
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+
 public class KingWiki extends BaseEntity {
     protected String mienHieu;
     protected String thuyHieu;
@@ -99,5 +108,13 @@ public class KingWiki extends BaseEntity {
                 + "Kế nhiệm: " + this.getKeNhiem() + "\n" + "Sinh: " + this.getSinh() + "\n" + "Mất: " + this.getMat() + "\n"
                 + "Triều đại: " + this.getTrieuDai() + "\n" + "An Táng: " + this.getAntang() + "\n" + "Thân phụ: " + this.getThanPhu() + "\n"
                 + "Thân mẫu: " + this.getThanMau() + "\n" + "Chi tiết: " + this.getDescription();
+    }
+    public List<KingWiki> loadDataJson() throws IOException {
+        Gson gson = new Gson();
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/King_Wiki.json"));
+        List<KingWiki> dks = Arrays.asList(gson.fromJson(reader, KingWiki[].class));
+        reader.close();
+
+        return dks;
     }
 }

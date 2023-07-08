@@ -1,7 +1,15 @@
 
 package scrapingdata.entity;
 
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class Dynasty extends BaseEntity {
@@ -35,5 +43,12 @@ public class Dynasty extends BaseEntity {
     public String hienthi() {
         return "Tên: " + this.getName() + "\n" + "Thời gian: " + this.getTime() + "\n" + "Tên nước: " + this.getKingdom() + "\n" + "Thủ đô: " + this.getCapital() + "\n" + "các đời vua: " + /*this.getKing().toString()*/
                  "\n" +  "Chi tiết: " + this.getDescription();
+    }
+    @Override
+    public List<Dynasty> loadDataJson() throws IOException {
+        Gson gson = new Gson();
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasties_NKS.json"));
+        List<Dynasty> dks = Arrays.asList(gson.fromJson(reader, Dynasty[].class));
+        return dks;
     }
 }

@@ -1,5 +1,8 @@
 package scrapingdata.entity;
 
+import java.io.IOException;
+import java.util.List;
+
 public abstract class BaseEntity {
     private String name;
     private String time;
@@ -40,5 +43,6 @@ public abstract class BaseEntity {
         else this.description = "";
     }
     public abstract String hienthi();
+    public abstract List loadDataJson() throws IOException;
 
 }
