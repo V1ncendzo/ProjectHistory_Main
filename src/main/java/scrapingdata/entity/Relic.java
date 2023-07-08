@@ -57,7 +57,6 @@ public class Relic extends BaseEntity{
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Relic.json"));
         List<Relic> relics = Arrays.asList(gson.fromJson(reader, Relic[].class));
-
         return relics;
     }
 }

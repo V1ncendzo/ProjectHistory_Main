@@ -25,9 +25,9 @@ public class Event extends BaseEntity {
     public List<Event> loadDataJson() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Event_Wiki.json"));
-        List<Event> dks = Arrays.asList(gson.fromJson(reader, Event[].class));
+        List<Event> eventList = Arrays.asList(gson.fromJson(reader, Event[].class));
 
-        return dks;
+        return eventList;
     }
     @Override
     public String hienthi() {

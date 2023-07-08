@@ -52,9 +52,11 @@ public class Festival extends BaseEntity {
     public List<Festival> loadDataJson() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Festival_Wiki.json"));
-        List<Festival> dks = Arrays.asList(gson.fromJson(reader, Festival[].class)); //dks is arraylist of festival
+        List<Festival> festivalList = Arrays.asList(gson.fromJson(reader, Festival[].class)); //dks is arraylist of festival
         reader.close();
+        System.out.println(gson.toJson(festivalList));
 
-        return dks;
+        return festivalList;
     }
+
 }

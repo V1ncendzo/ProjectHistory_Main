@@ -43,7 +43,7 @@ public class FigureFiltering {
             boolean ktra = false;
             String name1 = e.getName();
             for(Character f : VanSu) {
-                System.out.println(f.hienthi());
+//                System.out.println(f.hienthi());
                 String name2 = f.getName();
                 if(name1.equals(name2)) {
                     ktra = true;
@@ -61,6 +61,7 @@ public class FigureFiltering {
 //                    List<String> era = f.getEra();
                     Character nvNew = new Character(name,time,depcription,aotherName);
                     nv.add(nvNew);
+
                     numb++;
 
                     break;

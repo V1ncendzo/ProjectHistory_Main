@@ -112,9 +112,9 @@ public class KingWiki extends BaseEntity {
     public List<KingWiki> loadDataJson() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/King_Wiki.json"));
-        List<KingWiki> dks = Arrays.asList(gson.fromJson(reader, KingWiki[].class));
+        List<KingWiki> kingWikiList = Arrays.asList(gson.fromJson(reader, KingWiki[].class));
         reader.close();
 
-        return dks;
+        return kingWikiList;
     }
 }

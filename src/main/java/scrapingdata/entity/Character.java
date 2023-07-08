@@ -15,10 +15,10 @@ import java.util.List;
 public class Character extends BaseEntity {
     private String otherName;
     private String place;
-    private List<String> era ;
     public Character(){
         super();
     }
+    private List<Character> relatedToCharacter;
 
     public Character(String otherName) {
         this.otherName = otherName;
@@ -28,7 +28,7 @@ public class Character extends BaseEntity {
         super();
         this.otherName = null;
         this.place = null;
-        this.era = null;
+//        this.era = null;
     }
     public String getotherName() {
         return otherName;
@@ -69,9 +69,12 @@ public class Character extends BaseEntity {
     public List<Character> loadDataJson() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Figure.json"));
-        List<Character> dks = Arrays.asList(gson.fromJson(reader, Character[].class));
+        List<Character> characterList = Arrays.asList(gson.fromJson(reader, Character[].class));
         reader.close();
-        return dks;
+        return characterList;
     }
 
+    public List<Character> getRelatedToCharacter() {
+        return relatedToCharacter;
+    }
 }

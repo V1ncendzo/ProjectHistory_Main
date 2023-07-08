@@ -44,10 +44,12 @@ public class ScrapingWikiDynasty extends BaseScrapingDynasty {
         Elements table = doc.select("table[align*=right]");
         for(Element i : table.select("a"))
             linkTrieuDai.add(i.attr("href"));
+        linkTrieuDai.remove(0);
 
-        for(int l = 0 ; l < linkTrieuDai.size() ; l++ ) {
+
+        for(int l = 1 ; l < linkTrieuDai.size() ; l++ ) {
             if(l==0||l==linkTrieuDai.size()-1) {
-                continue;
+
             }
             else {
                 Dynasty dk1 = new Dynasty();
@@ -56,8 +58,22 @@ public class ScrapingWikiDynasty extends BaseScrapingDynasty {
                 Document data;
                 try {
                     data = webConnection.get();
+
                     String title = data.getElementsByClass("mw-page-title-main").text();
                     dk1.setName(title);
+                    Elements description = data.select("div[class = mw-parser-output]").select(">p");
+                    String des = "";
+                    int count = 0;
+                    for(Element d: description){
+                        if(!d.text().equals("")){
+                            if(count > 2){
+                                break;
+                            }count ++;
+                            des += d.text() + "\n";
+                            System.out.println(d.text());
+                        }
+                    }
+                    dk1.setDescription(des);
 
                     Elements info = data.getElementsByClass("infobox").select("[style*=width:22em]");
                     for (Element infoElement : info.select("[scope=row]")) {

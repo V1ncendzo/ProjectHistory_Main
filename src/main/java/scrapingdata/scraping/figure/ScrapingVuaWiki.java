@@ -114,7 +114,7 @@ public class ScrapingVuaWiki extends BaseScrapingFigure {
                     Gson gson = new GsonBuilder().setPrettyPrinting().create();
                     gson.toJson(kingInfo, file);
                     file.write(",\n");
-                    System.out.println(kingInfo.hienthi());
+                    System.out.println(gson.toJson(kingInfo));
                 }
             }
         } catch (IOException e) {
