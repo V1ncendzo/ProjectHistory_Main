@@ -71,7 +71,7 @@ public class ScrapingWikiFestival extends BaseScrapingFestival{
             listCharacter.add(character);
 
         }
-        Gson gson = new Gson();
+
         for (int i = 1; i < listTime.size(); i++) {
             festival[i] = new Festival();
             festival[i].setTime(listTime.get(i));
@@ -79,15 +79,17 @@ public class ScrapingWikiFestival extends BaseScrapingFestival{
             festival[i].setPlace(listPlace.get(i));
             festival[i].setFirstTime(listFirstHeld.get(i));
             festival[i].setCharacter(listCharacter.get(i));
-            festival[i].setMoreInfo(gson.toJson(festival[i]));
-            festival[i].setId(i);
+
         }
 
-        try(FileWriter writer = new FileWriter("src\\main\\java\\json\\Festival_Wiki.json", true)) {
+        try(FileWriter writer = new FileWriter("src\\main\\java\\json\\festival_Wiki.json", true)) {
+            writer.write("[");
             for (int i = 1; i < listTime.size(); i++) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(festival[i], writer);
                 writer.write(",\n");
             }
+            writer.write("]");
         }
         catch (IOException e) {
             e.printStackTrace();
