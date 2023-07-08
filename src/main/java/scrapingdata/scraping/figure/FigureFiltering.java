@@ -123,6 +123,9 @@ public class FigureFiltering {
         try (Writer file = new FileWriter("src\\main\\java\\json\\Figure.json")){
             file.write("[\n");
             for(Character e : nv) {
+                if(e.getName() == null){
+                    continue;
+                }
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(e, file);
                 file.write(",\n");

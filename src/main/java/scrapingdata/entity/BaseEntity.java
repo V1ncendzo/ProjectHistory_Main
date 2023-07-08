@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseEntity {
+    private static int id;
     private String name;
     private String time;
     private String description;
@@ -17,6 +18,7 @@ public abstract class BaseEntity {
         this.name = name;
         this.time = time;
         this.description = description;
+        id++;
     }
     public String getName() {
         return name;
