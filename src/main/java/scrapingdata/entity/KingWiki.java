@@ -103,7 +103,7 @@ public class KingWiki extends BaseEntity {
 
     @Override
     public String hienthi() {
-        return "Tên: " + this.getName() + "\n"  + "Miếu hiệu: " + this.getMienHieu() + "\n" +
+        return "ID" + this.getId()+ "Tên: " + this.getName() + "\n"  + "Miếu hiệu: " + this.getMienHieu() + "\n" +
                 "Trị vì: " + this.getTriVi() + "\n" + "Tiền nhiệm: " + this.getTienNhiem() + "\n"
                 + "Kế nhiệm: " + this.getKeNhiem() + "\n" + "Sinh: " + this.getSinh() + "\n" + "Mất: " + this.getMat() + "\n"
                 + "Triều đại: " + this.getTrieuDai() + "\n" + "An Táng: " + this.getAntang() + "\n" + "Thân phụ: " + this.getThanPhu() + "\n"

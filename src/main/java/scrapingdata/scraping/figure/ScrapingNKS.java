@@ -27,11 +27,16 @@ public class ScrapingNKS extends BaseScrapingFigure {
         for (int i = 0; i < 291; i++) {
 
             Document doc = null;
+
             try {
-                doc = Jsoup.connect(url + "?start=" + i * 5).get();
+                doc = Jsoup
+                        .connect(url)
+                        .userAgent("Jsoup client")
+                        .timeout(20000).get();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
+
 
             Elements LinkCharater = doc.select("h2");
 

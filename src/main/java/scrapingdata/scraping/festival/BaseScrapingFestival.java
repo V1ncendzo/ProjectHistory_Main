@@ -7,7 +7,7 @@ import scrapingdata.Base;
 
 public abstract class BaseScrapingFestival extends Base {
     public BaseScrapingFestival(String url) {
-        super(url);
+        super();
     }
 
     public BaseScrapingFestival() {

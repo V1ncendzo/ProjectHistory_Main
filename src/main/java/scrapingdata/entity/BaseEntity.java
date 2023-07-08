@@ -4,19 +4,22 @@ import java.io.IOException;
 import java.util.List;
 
 public abstract class BaseEntity {
-    private static int id;
+    private int id;
+    private static int entityID = 0;
     private String name;
     private String time;
     private String description;
     private String moreInfo;
     public BaseEntity(){
-
+        entityID++;
+        this.id = entityID;
     }
     public BaseEntity(String name, String time, String description) {
         this.name = name;
         this.time = time;
         this.description = description;
-        id++;
+        entityID++;
+        this.id = entityID;
     }
     public String getName() {
         return name;
@@ -25,6 +28,14 @@ public abstract class BaseEntity {
     public void setName(String name) {
         if(name!=null) this.name = name;
         else this.name = "Không rõ";
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTime() {

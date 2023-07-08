@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public abstract class ScrapingEvent extends Base {
     public ScrapingEvent(String url) {
-        super(url);
+        super();
     }
 
     public ScrapingEvent() {

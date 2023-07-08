@@ -20,7 +20,7 @@ public class ScrapingVanSu extends BaseScrapingFigure {
     }
 
     @Override
-    public List<String> getFigureLinks(String url) {               //120 page
+    public List<String> getFigureLinks(String url) {               //120 pages
         List<String> FigureLinks = new ArrayList<String>();
         for (int i = 0; i <= 120; i++) {
             Document vanSu = null;

@@ -47,7 +47,7 @@ public abstract class Base {
         else this.description = "";
     }
 
-    public abstract List loadDataJson() throws IOException;
+
     public boolean filterProperty(String filter, String type) {
         if (filter == null || filter.isEmpty()) {
             return true;
@@ -60,7 +60,7 @@ public abstract class Base {
             return false;
         }
     }
-    public abstract String hienthi();
+
 }
 
 

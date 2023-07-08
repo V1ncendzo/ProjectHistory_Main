@@ -17,7 +17,6 @@ public class Festival extends BaseEntity {
     private String character;
 
     public Festival() {
-
     }
 
     public String getPlace() {

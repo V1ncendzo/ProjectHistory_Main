@@ -7,8 +7,7 @@ import java.util.List;
 public abstract class BaseScrapingFigure extends Base {
 
     public BaseScrapingFigure(String url){
-        super(url);
-        this.doc = null;
+        super();
     }
     public BaseScrapingFigure(){
     }

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ScrapingWikiEvent extends ScrapingEvent {
     public ScrapingWikiEvent(String url) {
-        super(url);
+        super();
     }
 
     public ScrapingWikiEvent() {

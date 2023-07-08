@@ -80,6 +80,7 @@ public class ScrapingWikiFestival extends BaseScrapingFestival{
             festival[i].setFirstTime(listFirstHeld.get(i));
             festival[i].setCharacter(listCharacter.get(i));
             festival[i].setMoreInfo(gson.toJson(festival[i]));
+            festival[i].setId(i);
         }
 
         try(FileWriter writer = new FileWriter("src\\main\\java\\json\\Festival_Wiki.json", true)) {
