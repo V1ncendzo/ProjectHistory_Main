@@ -60,9 +60,6 @@ public class EntityRelateToFigure {
         reader.close();
         return kingList;
     }
-
-
-
     public Map<BaseEntity, List<BaseEntity>> Relating(List<Character> figureList, List<Festival> festivalList, List<Dynasty> dynastyList, List<Relic> relicList, List<Event> eventList, List<KingWiki> kingWikiList ) {
         Map<BaseEntity, List<BaseEntity>> map = new HashMap<>();
         for (Character c : figureList) {
