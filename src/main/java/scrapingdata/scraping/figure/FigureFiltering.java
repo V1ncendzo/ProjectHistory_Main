@@ -59,22 +59,17 @@ public class FigureFiltering {
                 if(name1.equals(name2)) {
                     ktra = true;
                     String name = name2;
-                    String time = null;
-                    String timeNKS = e.getTime();
-                    String timeVS = f.getTime();
-                    time = timeVS;
-                    if(timeNKS.equals("Không rõ")||timeNKS.equals("Không rõ---Không rõ")) time = timeVS;
-                    if(timeVS.equals("Không rõ")) time = timeNKS;
-
+                    String sinh = e.getSinh();
+                    String mat = e.getMat();
+                    String time = f.getTime();
                     String depcription = e.getDescription();
                     String aotherName = f.getotherName();
+                    String ngheNghiep = e.getNgheNghiep();
 //                    String place = f.getPlace();
 //                    List<String> era = f.getEra();
-                    Character nvNew = new Character(name,time,depcription,aotherName);
+                    Character nvNew = new Character(name,time,depcription,aotherName,sinh,mat, ngheNghiep);
                     nv.add(nvNew);
-
                     numb++;
-
                     break;
                 }
             }
@@ -86,34 +81,42 @@ public class FigureFiltering {
         }
         for(Character f: VanSu) {
             VSnumb++;
-            boolean ktra = false;
+            boolean check = false;
             String name1 = f.getName();
             for(Character e : nv) {
                 String name2 = e.getName();
                 if(name1.equals(name2)) {
-                    ktra = true;
+                    check = true;
                     break;
                 }
             }
-            if(ktra == false) {
+            if(check == false) {
+                String name = name1;
+                String sinh = f.getSinh();
+                String mat = f.getMat();
+                String time = f.getTime();
+                String depcription = f.getDescription();
+                String aotherName = f.getotherName();
+                String ngheNghiep = f.getNgheNghiep();
+                Character nvNew = new Character(name,time,depcription,aotherName,sinh,mat, ngheNghiep);
+                nv.add(nvNew);
                 numb++;
-                nv.add(f);
 
             }
         }
-        // Remove King
-        for(KingWiki k : kingList ){
-            String kName = k.getName();
-            for(Character c : nv){
-                String cName = c.getName();
-                if(kName.equals(cName)){
-                    kingNumb++;
-                    nv.remove(c);
-                }
-            }
-        }
+//         Remove King
+//        for(KingWiki k : kingList ){
+//            String kName = k.getName();
+//            for(Character c : nv){
+//                String cName = c.getName();
+//                if(kName.equals(cName)){
+//                    kingNumb++;
+//                    nv.remove(c);
+//                }
+//            }
+//        }
 
-        System.out.println(kingNumb);
+//        System.out.println(kingNumb);
         System.out.println(NKSnumb);
         System.out.println(VSnumb);
         System.out.println(numb);

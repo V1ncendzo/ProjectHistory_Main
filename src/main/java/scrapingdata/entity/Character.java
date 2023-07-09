@@ -27,10 +27,11 @@ public class Character extends BaseEntity {
 
 
 
-    public Character(String name, String time, String depcription, String aotherName) {
+    public Character(String name, String time, String depcription, String aotherName, String sinh, String mat,String ngheNghiep) {
         super();
+        this.sinh = sinh;
+        this.mat = mat;
         this.otherName = null;
-        this.place = null;
 //        this.era = null;
     }
     public String getotherName() {
@@ -85,6 +86,9 @@ public class Character extends BaseEntity {
     }
 
     public String getNgheNghiep() {
+        if(this.ngheNghiep == null){
+            return "Không rõ";
+        }
         return ngheNghiep;
     }
 

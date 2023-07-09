@@ -1,22 +1,12 @@
 
 package scrapingdata.entity;
 
-import com.google.gson.Gson;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class Dynasty extends BaseEntity {
 
     private String kingdom;
     private String capital;
-    private ArrayList<String> king;
 
     public Dynasty(String name, String kingdom, String capital, String description) {
     }
@@ -25,23 +15,24 @@ public class Dynasty extends BaseEntity {
     }
 
     public String getKingdom() {
-        return kingdom;
+        if(this.kingdom == null){
+            return "Không rõ";
+        }
+    return kingdom;
     }
     public void setKingdom(String kingdom) {
         this.kingdom = kingdom;
     }
     public String getCapital() {
+        if(this.capital == null){
+            return "Không rõ";
+        }
         return capital;
     }
     public void setCapital(String capital) {
         this.capital = capital;
     }
-    public ArrayList<String> getKing() {
-        return king;
-    }
-    public void setKing(ArrayList<String> king) {
-        this.king = king;
-    }
+
 
 
 

@@ -116,6 +116,7 @@ public class ScrapingNKS extends BaseScrapingFigure {
                     }
                     nhanVat.setName(name);
                     nhanVat.setDescription(description);
+                    nhanVat.setotherName("Không rõ");
 //                    nhanVat.setAotherName(aotherName);
 //                    nhanVat.setEra(era);
 //                    nhanVat.setPlace(place);
@@ -146,7 +147,12 @@ public class ScrapingNKS extends BaseScrapingFigure {
                                 time = str.substring(1, str.length()-1);
                             }
                             nhanVat.setName(name);
-                            nhanVat.setTime(time);
+
+                            nhanVat.setSinh("Không rõ");
+                            nhanVat.setMat("Không rõ");
+                            nhanVat.setotherName("Không rõ");
+                            nhanVat.setTime("Không rõ");
+                            nhanVat.setNgheNghiep("Không rõ");
                             Elements describe1 = articleBody.select("#toc ~ *");
                             if(describe1.size()>0) {
                                 int count = 0;

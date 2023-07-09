@@ -80,6 +80,9 @@ public class ScrapingVanSu extends BaseScrapingFigure {
                     nhanVat.setName(name);
                     nhanVat.setDescription(description);
                     nhanVat.setotherName(otherName);
+                    nhanVat.setSinh("Không rõ");
+                    nhanVat.setMat("Không rõ");
+                    nhanVat.setNgheNghiep("Không rõ");
 
                     Gson gson = new GsonBuilder().setPrettyPrinting().create();
                     gson.toJson(nhanVat, writer);
