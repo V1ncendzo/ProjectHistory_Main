@@ -19,6 +19,7 @@ public class Test {
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Festival_Wiki.json"));
         List<Festival> festivalList =  Arrays.asList(gson.fromJson(reader, Festival[].class));
         reader.close();
+
     }
 
 

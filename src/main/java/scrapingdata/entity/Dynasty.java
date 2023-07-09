@@ -51,10 +51,4 @@ public class Dynasty extends BaseEntity {
                  "\n" +  "Chi tiết: " + this.getDescription();
     }
 
-    public List<Dynasty> loadDataJson() throws IOException {
-        Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasty_NKS.json"));
-        List<Dynasty> dynastyList = Arrays.asList(gson.fromJson(reader, Dynasty[].class));
-        return dynastyList;
-    }
 }

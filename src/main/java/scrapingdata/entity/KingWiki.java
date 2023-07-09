@@ -109,12 +109,4 @@ public class KingWiki extends BaseEntity {
                 + "Triều đại: " + this.getTrieuDai() + "\n" + "An Táng: " + this.getAntang() + "\n" + "Thân phụ: " + this.getThanPhu() + "\n"
                 + "Thân mẫu: " + this.getThanMau() + "\n" + "Chi tiết: " + this.getDescription();
     }
-    public List<KingWiki> loadDataJson() throws IOException {
-        Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/King_Wiki.json"));
-        List<KingWiki> kingWikiList = Arrays.asList(gson.fromJson(reader, KingWiki[].class));
-        reader.close();
-
-        return kingWikiList;
-    }
 }

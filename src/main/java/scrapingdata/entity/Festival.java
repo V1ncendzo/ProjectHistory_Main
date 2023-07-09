@@ -48,14 +48,5 @@ public class Festival extends BaseEntity {
                 + "\n" + "Chi Tiết: " + this.getDescription();
     }
 
-    public List<Festival> loadDataJson() throws IOException {
-        Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Festival_Wiki.json"));
-        List<Festival> festivalList = Arrays.asList(gson.fromJson(reader, Festival[].class)); //dks is arraylist of festival
-        reader.close();
-        System.out.println(gson.toJson(festivalList));
-
-        return festivalList;
-    }
 
 }

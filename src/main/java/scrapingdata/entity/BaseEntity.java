@@ -75,4 +75,5 @@ public abstract class BaseEntity {
         this.moreInfo = moreInfo;
     }
 
+
 }

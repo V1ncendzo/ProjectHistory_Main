@@ -66,13 +66,6 @@ public class Character extends BaseEntity {
     }
 
 
-    public List<Character> loadDataJson() throws IOException {
-        Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Figure.json"));
-        List<Character> characterList = Arrays.asList(gson.fromJson(reader, Character[].class));
-        reader.close();
-        return characterList;
-    }
 
     public List<Character> getRelatedToCharacter() {
         return relatedToCharacter;
