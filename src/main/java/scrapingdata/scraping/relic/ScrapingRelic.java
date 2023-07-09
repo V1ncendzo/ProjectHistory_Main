@@ -50,16 +50,22 @@ public class ScrapingRelic extends BaseScrapingRelic{
                 try {
                     Document data = Jsoup.connect(url).get();
                     Elements names = data.select("div[class=page-content] h1[class=page-title]");
-                    Elements places = data.select("div[class=description] p");
-                    Elements decriptions = data.select("p[style=text-align:justify]");
+                    Elements description = data.select("div[class=description] ");
+//                    Elements decriptions = data.select("p[style=text-align:justify]");
                     for (int i = 0; i < names.size(); i++) {
                         Relic relic = new Relic();
                         relic.setName(names.get(i).text());
                         relic.setTime("");
-                        for(int j=0; j<decriptions.size(); j++) {
-                            relic.setDescription(decriptions.text());
-                        }
-                        relic.setPlace(places.text());
+//                        int count = 0;
+//                        for(int j=0; j<=0; j++) {
+//                            if(decriptions.get(i).text() != null){
+//                                count ++;
+//                                if(count <= 1){
+//                                    relic.setDescription(decriptions.text());
+//                                }
+//                            }
+//                        }
+                        relic.setDescription(description.text());
                         for (Element element: relics ) {
                             Element tdTag = element.parent().parent();
                             String relicCertifacte = tdTag.nextElementSibling().text();

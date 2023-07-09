@@ -66,7 +66,7 @@ public class ScrapingWikiDynasty extends BaseScrapingDynasty {
                     int count = 0;
                     for(Element d: description){
                         if(!d.text().equals("")){
-                            if(count > 2){
+                            if(count > 1){
                                 break;
                             }count ++;
                             des += d.text() + "\n";

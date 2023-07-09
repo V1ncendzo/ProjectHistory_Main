@@ -101,7 +101,7 @@ public class ScrapingNKS extends BaseScrapingFigure {
                         for (Element p : paragraphs) {
                             if (!p.text().equals("")) {
                                 count++;
-                                if(count <= 2){
+                                if(count <= 1){
                                     description += p.text() + "\n";
                                 }
                             }
@@ -146,7 +146,7 @@ public class ScrapingNKS extends BaseScrapingFigure {
                                 for(Element p1 : describe1) {
                                     if(!p1.text().equals("")){
                                         count ++;
-                                        if(count <= 2){
+                                        if(count <= 1){
                                             description+=p1.text()+"\n";
                                         }
                                     }

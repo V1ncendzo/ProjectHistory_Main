@@ -67,12 +67,13 @@ public class ScrapingVanSu extends BaseScrapingFigure {
                             if (key.equals("Tên khác")) {
                                 otherName = value;
                             }
-                            if (key.equals("Thời kì")) {
+                             if (key.equals("Thời kì")) {
                                 time = value;
                             }
 
                         } else if (column.size() == 1) {
-                            description += column.text();
+
+                            description += column.select("> p").get(0);
                         }
                     }
                     nhanVat.setTime(time);
