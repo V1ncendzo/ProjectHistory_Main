@@ -28,7 +28,7 @@ public class ScrapingWikiDynasty extends BaseScrapingDynasty {
 
     @Override
     public void getData() {
-        File theFile = new File("src\\main\\java\\json\\Dynasties_Wiki.json");
+        File theFile = new File("src\\main\\java\\json\\Dynasty_Wiki.json");
         String url = "https://vi.wikipedia.org/wiki/L%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
 
         String aaa = "Thủ đô";

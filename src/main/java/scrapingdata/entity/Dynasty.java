@@ -18,6 +18,12 @@ public class Dynasty extends BaseEntity {
     private String capital;
     private ArrayList<String> king;
 
+    public Dynasty(String name, String kingdom, String capital, String description) {
+    }
+    public Dynasty(){
+
+    }
+
     public String getKingdom() {
         return kingdom;
     }
@@ -47,7 +53,7 @@ public class Dynasty extends BaseEntity {
 
     public List<Dynasty> loadDataJson() throws IOException {
         Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasties_NKS.json"));
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasty_NKS.json"));
         List<Dynasty> dynastyList = Arrays.asList(gson.fromJson(reader, Dynasty[].class));
         return dynastyList;
     }

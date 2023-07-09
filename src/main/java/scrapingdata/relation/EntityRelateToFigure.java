@@ -32,7 +32,7 @@ public class EntityRelateToFigure {
     }
     public List<Dynasty> loadDataDynasty() throws IOException {
         Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasties_Wiki.json"));
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasty_Wiki.json"));
         List<Dynasty> dynastyList =  Arrays.asList(gson.fromJson(reader, Dynasty[].class));
         reader.close();
 

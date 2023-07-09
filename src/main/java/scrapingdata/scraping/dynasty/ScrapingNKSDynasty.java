@@ -19,7 +19,7 @@ public class ScrapingNKSDynasty extends BaseScrapingDynasty{
 
     @Override
     public void getData() {
-        File theFile = new File("src\\main\\java\\json\\Dynasties_NKS.json");
+        File theFile = new File("src\\main\\java\\json\\Dynasty_NKS.json");
 
         try {
             String url = "https://nguoikesu.com/dong-lich-su";
