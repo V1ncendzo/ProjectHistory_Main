@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Relic extends BaseEntity{
-    private String place;
+
     private String province;
 
     private String certifacte;
@@ -33,13 +33,6 @@ public class Relic extends BaseEntity{
         this.certifacte = certifacte;
     }
 
-    public String getPlace() {
-        return place;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
-    }
 
     public String getProvince() {
         return province;

@@ -4,6 +4,7 @@ package scrapingdata.scraping.figure;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import scrapingdata.entity.Character;
+import scrapingdata.entity.KingWiki;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,11 +34,21 @@ public class FigureFiltering {
 
         return VanSu;
     }
-    public List<Character> Aggregation(List<Character> NKS, List<Character> VanSu) {
+    public List<KingWiki> loadDataJsonKingWiki() throws IOException {
+        Gson gson = new Gson();
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/King_Wiki.json"));
+        List<KingWiki> kingList = Arrays.asList(gson.fromJson(reader, KingWiki[].class));
+        reader.close();
+
+        return kingList;
+    }
+
+    public List<Character> Aggregation(List<Character> NKS, List<Character> VanSu, List<KingWiki> kingList) {
         List<Character> nv = new ArrayList<Character>();
         int numb = 0;
         int NKSnumb = 0;
         int VSnumb = 0;
+        int kingNumb = 0;
         for(Character e : NKS ) {
             NKSnumb++;
             boolean ktra = false;
@@ -87,38 +98,37 @@ public class FigureFiltering {
             if(ktra == false) {
                 numb++;
                 nv.add(f);
+
             }
         }
+        // Remove King
+        for(KingWiki k : kingList ){
+            String kName = k.getName();
+            for(Character c : nv){
+                String cName = c.getName();
+                if(kName.equals(cName)){
+                    kingNumb++;
+                    nv.remove(c);
+                }
+            }
+        }
+
+        System.out.println(kingNumb);
         System.out.println(NKSnumb);
         System.out.println(VSnumb);
         System.out.println(numb);
         return nv;
     }
-//    public void Start() throws IOException {
-//        DataFiltering dA = new DataFiltering();
-//        List<Character> listNKS = dA.loadDataJsonNKS();
-//        List<Character> listVS = dA.loadDataJsonVanSu();
-//        List<Character> nv = dA.Aggregation(listNKS, listVS);
-//
-//        try (Writer file = new FileWriter("src\\main\\java\\json\\character1.json")){
-//            file.write("[\n");
-//            for(Character e : nv) {
-//                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//                gson.toJson(e, file);
-//                file.write(",\n");
-//            }
-//            file.write("]");
-//        }catch (IOException e1) {
-//            // TODO Auto-generated catch block
-//            e1.printStackTrace();
-//        }
-//
-//    }
+
+
+
+
     public static void main(String[] args) throws IOException {
         FigureFiltering dA = new FigureFiltering();
         List<Character> listNKS = dA.loadDataJsonNKS();
         List<Character> listVS = dA.loadDataJsonVanSu();
-        List<Character> nv = dA.Aggregation(listNKS, listVS);
+        List<KingWiki> kingList = dA.loadDataJsonKingWiki();
+        List<Character> nv = dA.Aggregation(listNKS, listVS, kingList );
 
         try (Writer file = new FileWriter("src\\main\\java\\json\\Figure.json")){
             file.write("[\n");

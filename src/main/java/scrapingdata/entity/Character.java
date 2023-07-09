@@ -15,14 +15,17 @@ import java.util.List;
 public class Character extends BaseEntity {
     private String otherName;
     private String place;
+    private String sinh;
+    private String mat;
+    private String ngheNghiep;
+
+
     public Character(){
         super();
     }
     private List<Character> relatedToCharacter;
 
-    public Character(String otherName) {
-        this.otherName = otherName;
-    }
+
 
     public Character(String name, String time, String depcription, String aotherName) {
         super();
@@ -65,7 +68,29 @@ public class Character extends BaseEntity {
                 +*/ "\n" + "Chi tiết: " + this.getDescription();
     }
 
+    public String getSinh() {
+        return sinh;
+    }
 
+    public void setSinh(String sinh) {
+        this.sinh = sinh;
+    }
+
+    public String getMat() {
+        return mat;
+    }
+
+    public void setMat(String mat) {
+        this.mat = mat;
+    }
+
+    public String getNgheNghiep() {
+        return ngheNghiep;
+    }
+
+    public void setNgheNghiep(String ngheNghiep) {
+        this.ngheNghiep = ngheNghiep;
+    }
 
     public List<Character> getRelatedToCharacter() {
         return relatedToCharacter;

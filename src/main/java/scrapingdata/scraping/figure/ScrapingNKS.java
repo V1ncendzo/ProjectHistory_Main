@@ -25,26 +25,24 @@ public class ScrapingNKS extends BaseScrapingFigure {
     public List<String> getFigureLinks(String url) {
         List<String> figureLinks = new ArrayList<String>();
         for (int i = 0; i < 291; i++) {
-
-            Document doc = null;
-
             try {
-                doc = Jsoup
-                        .connect(url)
+                Document doc = Jsoup
+                        .connect(url + "?start=" + i * 5)
                         .userAgent("Jsoup client")
                         .timeout(20000).get();
+                Elements LinkCharater = doc.select("h2");
+
+                for (Element r : LinkCharater) {
+                    String link = r.select("a").attr("href");
+                    figureLinks.add("https://nguoikesu.com" + link);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-
-            Elements LinkCharater = doc.select("h2");
-
-            for (Element r : LinkCharater) {
-                String link = r.select("a").attr("href");
-                figureLinks.add("https://nguoikesu.com" + link);
-
-            }
+        }
+        for(String ul : figureLinks){
+            System.out.println(ul);
         }
         return figureLinks;
     }
@@ -59,6 +57,7 @@ public class ScrapingNKS extends BaseScrapingFigure {
                 String sinh = null;
                 String mat = null;
                 String time =  null;
+                String chucVu = null;
                 Character nhanVat = new Character();
                 Document characterInfo = null;
                 try {
@@ -70,6 +69,7 @@ public class ScrapingNKS extends BaseScrapingFigure {
                 Elements infobox = characterInfo.select("div[class = infobox]");
                 if (infobox.size() > 0) {
                     Elements rows = infobox.get(0).select("tr");
+
                     for (Element r : rows) {
                         Elements infoKey = r.select("th");
                         Elements infoValue = r.select("td");
@@ -84,15 +84,22 @@ public class ScrapingNKS extends BaseScrapingFigure {
                                 mat = infoValue.text();
                             }
 
-                            description += key + ": " + value + "\n";
+                            if(key.equals("Nghề nghiệp")){
+                                chucVu = infoValue.text();
+                            }
+
                         }
                         if (infoValue.size() == 0) {
                             String value = r.text();
                             description += value + "\n";
                         }
                     }
-                    time = (sinh == null ? "Không rõ" : sinh) + " - " + (mat == null ? "Không rõ" : mat);
-                    nhanVat.setTime(time);
+;
+                    sinh = (sinh == null ? "Không rõ" : sinh);
+                    mat = (mat == null ? "Không rõ" : mat);
+                    nhanVat.setSinh(sinh);
+                    nhanVat.setMat(mat);
+                    nhanVat.setNgheNghiep(chucVu);
 
                     Elements articleBody = characterInfo.select("div[class = com-content-article__body]");
                     Elements paragraphs = articleBody.select("p");
