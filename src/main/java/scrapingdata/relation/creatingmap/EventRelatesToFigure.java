@@ -1,10 +1,10 @@
-package scrapingdata.relation;
+package scrapingdata.relation.creatingmap;
+
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import scrapingdata.entity.Character;
-import scrapingdata.entity.Dynasty;
-import scrapingdata.entity.Festival;
+import scrapingdata.entity.Event;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,14 +13,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class DynastyRelatedToFigure {
-    public List<Dynasty> loadDataDynasty() throws IOException {
+public class EventRelatesToFigure {
+    public List<Event> loadDataEvent() throws IOException {
         Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasty.json"));
-        List<Dynasty> dynastyList =  Arrays.asList(gson.fromJson(reader, Dynasty[].class));
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Event.json"));
+        List<Event> eventList =  Arrays.asList(gson.fromJson(reader, Event[].class));
         reader.close();
 
-        return dynastyList;
+        return eventList;
     }
     public List<Character> loadDataJsonFigure() throws IOException {
         Gson gson = new Gson();
@@ -32,12 +32,12 @@ public class DynastyRelatedToFigure {
     }
 
 
-    public Map<Integer, List<Integer> > Relating(List<Character> figureList, List<Dynasty> dynastyList) {
+    public Map<Integer, List<Integer> > Relating(List<Character> figureList, List<Event> eventList) {
         Map<Integer, List<Integer>> map = new HashMap<>();
-        for(Dynasty dynasty : dynastyList){
+        for(Event ev : eventList){
             boolean check = false;
             List<Integer> relatedList = new ArrayList<>();
-            String des = dynasty.getDescription();
+            String des = ev.getDescription();
             for(Character c : figureList){
                 String cName = c.getName();
                 if (des == null){
@@ -47,19 +47,19 @@ public class DynastyRelatedToFigure {
                     relatedList.add(c.getId());
                 }
             }
-            map.put(dynasty.getId(), relatedList);
+            map.put(ev.getId(), relatedList);
         }
         return map;
     }
 
     public static void main(String[] args) throws IOException {
-        DynastyRelatedToFigure rl = new DynastyRelatedToFigure();
-        List<Dynasty>  listDynasty = rl.loadDataDynasty();
+        EventRelatesToFigure rl = new EventRelatesToFigure();
+        List<Event>  listDynasty = rl.loadDataEvent();
         List<Character> listChar = rl.loadDataJsonFigure();
         Map<Integer, List<Integer>> maping = rl.Relating(listChar,listDynasty);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(maping);
-        try (FileWriter writer = new FileWriter("src\\main\\java\\json\\CharacterToDynasty.json")) {
+        try (FileWriter writer = new FileWriter("src\\main\\java\\json\\CharacterToEvent.json")) {
             writer.write(json);
             System.out.println("JSON data has been written to the file.");
         } catch (IOException e) {

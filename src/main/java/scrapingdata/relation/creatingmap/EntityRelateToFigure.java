@@ -1,8 +1,7 @@
-package scrapingdata.relation;
+package scrapingdata.relation.creatingmap;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.w3c.dom.ls.LSException;
 import scrapingdata.entity.*;
 import scrapingdata.entity.Character;
 

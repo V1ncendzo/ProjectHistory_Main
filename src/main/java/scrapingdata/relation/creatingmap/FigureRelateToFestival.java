@@ -1,13 +1,9 @@
-package scrapingdata.relation;
-
-
+package scrapingdata.relation.creatingmap;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import scrapingdata.entity.*;
 import scrapingdata.entity.Character;
-import scrapingdata.entity.Dynasty;
-import scrapingdata.entity.Festival;
-import scrapingdata.entity.Relic;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,14 +12,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class FigureRelateToRelic {
-    public List<Relic> loadDataJsonRelic() throws IOException {
+public class FigureRelateToFestival {
+    public List<Festival> loadDataJsonFestival() throws IOException {
         Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Relic.json"));
-        List<Relic> relicList = Arrays.asList(gson.fromJson(reader, Relic[].class));
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Festival_Wiki.json"));
+        List<Festival> festivalList =  Arrays.asList(gson.fromJson(reader, Festival[].class));
         reader.close();
 
-        return relicList;
+        return festivalList;
     }
     public List<Character> loadDataJsonFigure() throws IOException {
         Gson gson = new Gson();
@@ -35,33 +31,34 @@ public class FigureRelateToRelic {
     }
 
 
-    public Map<Integer, List<Integer> > Relating(List<Character> figureList, List<Relic> relicList) {
+    public Map<Integer, List<Integer> >Relating(List<Character> figureList, List<Festival> festivalList) {
         Map<Integer, List<Integer>> map = new HashMap<>();
-        for(Relic relic : relicList){
+        for(Festival fes : festivalList){
+            boolean check = false;
             List<Integer> relatedList = new ArrayList<>();
-            String des = relic.getDescription();
+            String chara = fes.getCharacter();
             for(Character c : figureList){
                 String cName = c.getName();
-                if (des == null){
+                if (chara == null){
                     continue;
                 }
-                if(des.contains(cName)){
+                if(chara.contains(cName)){
                     relatedList.add(c.getId());
                 }
             }
-            map.put(relic.getId(), relatedList);
+            map.put(fes.getId(), relatedList);
         }
         return map;
     }
 
     public static void main(String[] args) throws IOException {
-        FigureRelateToRelic rl = new FigureRelateToRelic();
-        List<Relic>  listRelic = rl.loadDataJsonRelic();
+        FigureRelateToFestival rl = new FigureRelateToFestival();
+        List<Festival>  listFes = rl.loadDataJsonFestival();
         List<Character> listChar = rl.loadDataJsonFigure();
-        Map<Integer, List<Integer>> maping = rl.Relating(listChar,listRelic);
+        Map<Integer, List<Integer>> maping = rl.Relating(listChar,listFes);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(maping);
-        try (FileWriter writer = new FileWriter("src\\main\\java\\json\\CharacterToRelic.json")) {
+        try (FileWriter writer = new FileWriter("src\\main\\java\\json\\CharacterToFestival.json")) {
             writer.write(json);
             System.out.println("JSON data has been written to the file.");
         } catch (IOException e) {
@@ -70,4 +67,3 @@ public class FigureRelateToRelic {
 
     }
 }
-

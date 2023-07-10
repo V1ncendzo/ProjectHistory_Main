@@ -1,4 +1,4 @@
-package scrapingdata.relation.json;
+package scrapingdata.relation.creatingjson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
