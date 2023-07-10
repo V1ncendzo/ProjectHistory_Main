@@ -34,16 +34,7 @@ public class FigureFiltering {
 
         return VanSu;
     }
-    public List<KingWiki> loadDataJsonKingWiki() throws IOException {
-        Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/King_Wiki.json"));
-        List<KingWiki> kingList = Arrays.asList(gson.fromJson(reader, KingWiki[].class));
-        reader.close();
-
-        return kingList;
-    }
-
-    public List<Character> Aggregation(List<Character> NKS, List<Character> VanSu, List<KingWiki> kingList) {
+    public List<Character> Aggregation(List<Character> NKS, List<Character> VanSu) {
         List<Character> nv = new ArrayList<Character>();
         int numb = 0;
         int NKSnumb = 0;
@@ -111,16 +102,11 @@ public class FigureFiltering {
         System.out.println("same : " + same);
         return nv;
     }
-
-
-
-
     public static void main(String[] args) throws IOException {
         FigureFiltering dA = new FigureFiltering();
         List<Character> listNKS = dA.loadDataJsonNKS();
         List<Character> listVS = dA.loadDataJsonVanSu();
-        List<KingWiki> kingList = dA.loadDataJsonKingWiki();
-        List<Character> nv = dA.Aggregation(listNKS, listVS, kingList );
+        List<Character> nv = dA.Aggregation(listNKS, listVS);
 
         try (Writer file = new FileWriter("src\\main\\java\\json\\Figure.json")){
             file.write("[\n");
