@@ -32,8 +32,8 @@ public class DynastyRelatedToFigure {
     }
 
 
-    public Map<String, List<Integer> > Relating(List<Character> figureList, List<Dynasty> dynastyList) {
-        Map<String, List<Integer>> map = new HashMap<>();
+    public Map<Integer, List<Integer> > Relating(List<Character> figureList, List<Dynasty> dynastyList) {
+        Map<Integer, List<Integer>> map = new HashMap<>();
         for(Dynasty dynasty : dynastyList){
             boolean check = false;
             List<Integer> relatedList = new ArrayList<>();
@@ -47,7 +47,7 @@ public class DynastyRelatedToFigure {
                     relatedList.add(c.getId());
                 }
             }
-            map.put(dynasty.getName(), relatedList);
+            map.put(dynasty.getId(), relatedList);
         }
         return map;
     }
@@ -56,7 +56,7 @@ public class DynastyRelatedToFigure {
         DynastyRelatedToFigure rl = new DynastyRelatedToFigure();
         List<Dynasty>  listDynasty = rl.loadDataDynasty();
         List<Character> listChar = rl.loadDataJsonFigure();
-        Map<String, List<Integer>> maping = rl.Relating(listChar,listDynasty);
+        Map<Integer, List<Integer>> maping = rl.Relating(listChar,listDynasty);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(maping);
         try (FileWriter writer = new FileWriter("src\\main\\java\\json\\CharacterToDynasty.json")) {

@@ -2,12 +2,13 @@
 package scrapingdata.entity;
 
 
+import java.util.List;
 
 public class Dynasty extends BaseEntity {
 
     private String kingdom;
     private String capital;
-    public String relate;
+    public List<Integer> relate;
 
     public Dynasty(String name, String kingdom, String capital, String description) {
         super(name,description);
@@ -42,11 +43,11 @@ public class Dynasty extends BaseEntity {
                  "\n" +  "Chi tiết: " + this.getDescription();
     }
 
-    public String getRelate() {
+    public List<Integer> getRelate() {
         return relate;
     }
 
-    public void setRelate(String relate) {
+    public void setRelate(List<Integer> relate) {
         this.relate = relate;
     }
 }

@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Relic extends BaseEntity{
+    private List<Integer> relate;
 
     private String province;
 
@@ -46,4 +47,11 @@ public class Relic extends BaseEntity{
         return "Tên: " + this.getName() + "\n" + "Tỉnh:" + this.getProvince() + "\n" + "Chứng nhận: " + this.getCertifacte() + "\n" + "Chi tiết: " + this.getDescription();
     }
 
+    public List<Integer> getRelate() {
+        return relate;
+    }
+
+    public void setRelate(List<Integer> relate) {
+        this.relate = relate;
+    }
 }
