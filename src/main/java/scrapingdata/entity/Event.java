@@ -1,19 +1,14 @@
 package scrapingdata.entity;
 
-import com.google.gson.Gson;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 
 public class Event extends BaseEntity {
+
     public Event() {
 
     }
     private String location;
+    public List<Integer> relate;
     public Event(String name, String time, String description, String location) {
         super(name, time, description);
         this.location = location;
@@ -32,4 +27,12 @@ public class Event extends BaseEntity {
         return  "Tên: " + this.getName() + "\n" + "Thời gian: " + this.getTime() + "\n" + "Triều đại: " + this.location + "\n" + "Chi tiết: " + this.getDescription();
     }
 
+    public List<Integer> getRelate() {
+        return relate;
+    }
+
+    public Event setRelate(List<Integer> relate) {
+        this.relate = relate;
+        return null;
+    }
 }

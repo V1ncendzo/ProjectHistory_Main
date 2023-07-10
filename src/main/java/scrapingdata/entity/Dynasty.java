@@ -7,6 +7,7 @@ public class Dynasty extends BaseEntity {
 
     private String kingdom;
     private String capital;
+    public String relate;
 
     public Dynasty(String name, String kingdom, String capital, String description) {
         super(name,description);
@@ -41,4 +42,11 @@ public class Dynasty extends BaseEntity {
                  "\n" +  "Chi tiết: " + this.getDescription();
     }
 
+    public String getRelate() {
+        return relate;
+    }
+
+    public void setRelate(String relate) {
+        this.relate = relate;
+    }
 }

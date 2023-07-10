@@ -96,8 +96,8 @@ public class FigureFiltering {
 
             }
         }
-        System.out.println(NKSnumb);
-        System.out.println(VSnumb);
+        System.out.println(NKSnumb); // 1200
+        System.out.println(VSnumb);  // 2300
         System.out.println("total : " + numb);
         System.out.println("same : " + same);
         return nv;

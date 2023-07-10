@@ -34,6 +34,7 @@ public class DynastyFiltering {
         return wiki;
     }
 
+
     public List<Dynasty> Merging(List<Dynasty> NKS, List<Dynasty> Wiki) {
         List<Dynasty> merge = new ArrayList<>();
         System.out.println(NKS.size());

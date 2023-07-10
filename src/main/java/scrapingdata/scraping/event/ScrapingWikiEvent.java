@@ -6,12 +6,17 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import scrapingdata.entity.Character;
 import scrapingdata.entity.Event;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -90,6 +95,7 @@ public class ScrapingWikiEvent extends ScrapingEvent {
 
     @Override
     public void getEventData(List<String> URLs) throws IOException {
+
         List<Event> eventList = new ArrayList<>();
         File theFile = new File("src\\main\\java\\json\\event_Wiki.json");
         for (String url : URLs) {
@@ -278,6 +284,7 @@ public class ScrapingWikiEvent extends ScrapingEvent {
                 ev.setTime(time);
                 ev.setLocation(location);
                 ev.setDescription(description);
+
                 eventList.add(ev);
                 System.out.println(ev.hienthi());
             } catch (IOException e) {
