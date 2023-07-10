@@ -9,9 +9,11 @@ public class Dynasty extends BaseEntity {
     private String capital;
 
     public Dynasty(String name, String kingdom, String capital, String description) {
+        super(name,description);
+        this.kingdom = kingdom;
+        this.capital = capital;
     }
     public Dynasty(){
-
     }
 
     public String getKingdom() {
@@ -32,9 +34,6 @@ public class Dynasty extends BaseEntity {
     public void setCapital(String capital) {
         this.capital = capital;
     }
-
-
-
 
     @Override
     public String hienthi() {

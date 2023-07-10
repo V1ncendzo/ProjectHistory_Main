@@ -21,7 +21,16 @@ public abstract class BaseEntity {
         entityID++;
         this.id = entityID;
     }
+    public BaseEntity(String name, String description){
+        this.name = name;
+        this.description =description;
+        entityID++;
+        this.id = entityID;
+    }
     public String getName() {
+        if(name == null){
+            return "Không rõ";
+        }
         return name;
     }
 

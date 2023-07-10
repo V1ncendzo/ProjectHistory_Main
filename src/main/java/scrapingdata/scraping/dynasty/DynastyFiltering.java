@@ -36,60 +36,81 @@ public class DynastyFiltering {
 
     public List<Dynasty> Merging(List<Dynasty> NKS, List<Dynasty> Wiki) {
         List<Dynasty> merge = new ArrayList<>();
+        System.out.println(NKS.size());
+        System.out.println(Wiki.size());
         int numb = 0;
+        int numb2 = 0;
+        int same = 0;
         int wikiNumb = 0;
         int NKSnumb = 0;
-        for (Dynasty d : NKS) {
+        for (Dynasty dNKS : NKS) {
             NKSnumb++;
             boolean check = false;
-            String name1 = d.getName();
-            for (Dynasty d2 : Wiki) {
-                String name2 = d.getName();
-                if (name1.equals(name2)) {
+            String nameNKS = dNKS.getName();
+            for (Dynasty dWiki : Wiki) {
+                String nameWiki = dWiki.getName();
+                if (nameNKS.equals(nameWiki)) {
+                    System.out.println("name1 : " +nameNKS);
+                    System.out.println("name2 : " + nameWiki);
                     check = true;
-                    String name = name2;
-                    String kingdom = d2.getKingdom();
-                    String capital = d2.getCapital();
+                    String name = nameWiki;
+                    String kingdom = dWiki.getKingdom();
+                    String capital = dWiki.getCapital();
                     String description = null;
-                    String descriptionNKS = d.getDescription();
-                    String descriptionWiki = d2.getDescription();
-                    if (descriptionNKS == null && descriptionWiki == null) {
+                    String descriptionNKS = dNKS.getDescription();
+                    String descriptionWiki = dWiki.getDescription();
+                    if (descriptionNKS.equals("") && descriptionWiki.equals("")) {
                         description = "không rõ";
-                    } else if (descriptionWiki == null && descriptionNKS != null) {
+                    } else if (descriptionWiki.equals("") && descriptionNKS.equals("")) {
                         description = descriptionNKS;
-                    } else if (descriptionNKS == null && descriptionWiki != null) {
+                    } else if (descriptionNKS.equals("") && descriptionWiki.equals("")) {
                         description = descriptionWiki;
                     }
                     Dynasty newDynasty = new Dynasty(name, kingdom, capital, description);
                     merge.add(newDynasty);
                     numb++;
+                    same++;
                     break;
                 }
             }
             if (check == false) {
-                merge.add(d);
+                String name = nameNKS;
+                System.out.println(name);
+                String kingdom = dNKS.getKingdom();
+                String capital = dNKS.getCapital();
+                String description = dNKS.getDescription() ;
+                Dynasty newDynasty = new Dynasty(name, kingdom, capital, description);
+                merge.add(newDynasty);
                 numb++;
             }
         }
-        for (Dynasty dWiki : Wiki) {
+        for(Dynasty dWiki : Wiki){
             wikiNumb++;
-            boolean check2 = false;
+            boolean check = false;
             String nameWiki = dWiki.getName();
-            for (Dynasty m : merge) {
-                String nameNKS = m.getName();
-                if (nameWiki.equals(nameNKS)) {
-                    check2 = true;
+            for(Dynasty dNKS : NKS){
+                String nameNKS = dNKS.getName();
+                if(nameWiki.equals(nameNKS)){
+                    check = true;
                     break;
                 }
             }
-            if (check2 == false) {
-                numb++;
-                merge.add((dWiki));
+            if(check == false){
+                String name = nameWiki;
+                System.out.println(name);
+                String kingdom = dWiki.getKingdom();
+                String capital = dWiki.getCapital();
+                String description = dWiki.getDescription() ;
+                Dynasty newDynasty = new Dynasty(name, kingdom, capital, description);
+                merge.add(newDynasty);
+                numb2++;
             }
         }
         System.out.println(wikiNumb);
         System.out.println(NKSnumb);
         System.out.println(numb);
+        System.out.println(numb2);
+        System.out.println(same);
         return merge;
     }
 

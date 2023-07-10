@@ -48,7 +48,7 @@ public class FigureFiltering {
         int numb = 0;
         int NKSnumb = 0;
         int VSnumb = 0;
-        int kingNumb = 0;
+        int same = 0;
         for(Character e : NKS ) {
             NKSnumb++;
             boolean ktra = false;
@@ -70,6 +70,7 @@ public class FigureFiltering {
                     Character nvNew = new Character(name,time,depcription,aotherName,sinh,mat, ngheNghiep);
                     nv.add(nvNew);
                     numb++;
+                    same++;
                     break;
                 }
             }
@@ -104,22 +105,10 @@ public class FigureFiltering {
 
             }
         }
-//         Remove King
-//        for(KingWiki k : kingList ){
-//            String kName = k.getName();
-//            for(Character c : nv){
-//                String cName = c.getName();
-//                if(kName.equals(cName)){
-//                    kingNumb++;
-//                    nv.remove(c);
-//                }
-//            }
-//        }
-
-//        System.out.println(kingNumb);
         System.out.println(NKSnumb);
         System.out.println(VSnumb);
-        System.out.println(numb);
+        System.out.println("total : " + numb);
+        System.out.println("same : " + same);
         return nv;
     }
 
@@ -150,4 +139,3 @@ public class FigureFiltering {
         }
     }
 }
-
