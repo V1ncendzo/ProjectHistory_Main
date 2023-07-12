@@ -1,10 +1,8 @@
 package scrapingdata.scraping.figure;
 
-import scrapingdata.Base;
-
 import java.util.List;
 
-public abstract class BaseScrapingFigure extends Base {
+public abstract class BaseScrapingFigure {
 
     public BaseScrapingFigure(String url){
         super();

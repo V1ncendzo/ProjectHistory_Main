@@ -1,12 +1,10 @@
 package scrapingdata.scraping.event;
 
 
-import scrapingdata.Base;
-
 import java.io.IOException;
 import java.util.List;
 
-public abstract class ScrapingEvent extends Base {
+public abstract class ScrapingEvent{
     public ScrapingEvent(String url) {
         super();
     }

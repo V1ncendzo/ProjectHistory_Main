@@ -1,11 +1,9 @@
 package scrapingdata.scraping.relic;
 
-import scrapingdata.Base;
-
 import java.util.List;
 
 
-public abstract class BaseScrapingRelic extends Base {
+public abstract class BaseScrapingRelic{
     public BaseScrapingRelic(){
         super();
 

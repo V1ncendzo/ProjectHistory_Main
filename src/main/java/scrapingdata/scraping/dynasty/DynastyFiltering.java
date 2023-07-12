@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 public class DynastyFiltering {
     public List<Dynasty> loadDataJsonDynastyNKS() throws IOException {
         Gson gson = new Gson();
@@ -33,8 +34,6 @@ public class DynastyFiltering {
 
         return wiki;
     }
-
-
     public List<Dynasty> Merging(List<Dynasty> NKS, List<Dynasty> Wiki) {
         List<Dynasty> merge = new ArrayList<>();
         System.out.println(NKS.size());
@@ -96,6 +95,7 @@ public class DynastyFiltering {
                     break;
                 }
             }
+
             if(check == false){
                 String name = nameWiki;
                 System.out.println(name);
@@ -105,6 +105,7 @@ public class DynastyFiltering {
                 Dynasty newDynasty = new Dynasty(name, kingdom, capital, description);
                 merge.add(newDynasty);
                 numb2++;
+
             }
         }
         System.out.println(wikiNumb);

@@ -1,11 +1,7 @@
 package scrapingdata.scraping.festival;
 
 
-
-
-import scrapingdata.Base;
-
-public abstract class BaseScrapingFestival extends Base {
+public abstract class BaseScrapingFestival{
     public BaseScrapingFestival(String url) {
         super();
     }
